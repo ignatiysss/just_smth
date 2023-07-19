@@ -1,24 +1,18 @@
+
 import java.io.File
 
 fun findFile(fileName: String) {
-    println("Введіть послідовність для пошуку (використовуйте * для позначення будь-якої букви):")
-    var sequence = readln().trim()
 
-    println("Введіть доовжину слова:")
-    val length = readln().toIntOrNull() ?: 0
+    println("Введіть послідовність для пошуку (використовуйте * для позначення будь-якої букви):")
+    val sequence = readLine()?.trim()
+
+    println("Введіть довжину слова:")
+    val length = readLine()?.toIntOrNull()
 
     println("Введіть номер букви, з якої починається слово:")
-    val startingLetterIndex = readln().toIntOrNull() ?: 0
+    val startingLetterIndex = readLine()?.toIntOrNull()
 
-    sequence = "*".repeat(startingLetterIndex) + sequence
-
-
-//    if (startingLetterIndex != null && sequence.length != length) {
-//        sequence += "*".repeat(startingLetterIndex - sequence.length)
-//    }
-    println(sequence)
-
-    if (sequence.isEmpty() || length == 0 || startingLetterIndex == 0) {
+    if (sequence.isNullOrEmpty() || length == null || startingLetterIndex == null) {
         println("Невірні вхідні дані. Будь ласка, перевірте введені значення.")
         return
     }
@@ -29,25 +23,25 @@ fun findFile(fileName: String) {
         return
     }
 
-    // val matchingWords = mutableListOf<String>()
+    val matchingWords = mutableListOf<String>()
 
-    /*
     file.forEachLine { line ->
         val words = line.split(" ")
         for (word in words) {
-            for (i in startingLetterIndex - 1..length) {
-                if (word[i] == sequence[i])
+            if (word.length >= length && word[startingLetterIndex - 1] == sequence[startingLetterIndex - 1] &&
+                word.substring(startingLetterIndex - 1).matches(sequence.replace("*", ".").toRegex())
+            ) {
+                matchingWords.add(word)
             }
         }
     }
-    */
-//
-//    if (matchingWords.isEmpty()) {
-//        println("Не знайдено жодного відповідного слова.")
-//    } else {
-//        println("Знайдені відповідні слова:")
-//        matchingWords.forEach { println(it) }
-//    }
+
+    if (matchingWords.isEmpty()) {
+        println("Не знайдено жодного відповідного слова.")
+    } else {
+        println("Знайдені відповідні слова:")
+        matchingWords.forEach { println(it) }
+    }
 }
 
 
