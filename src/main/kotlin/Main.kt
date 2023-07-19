@@ -18,7 +18,7 @@ fun findFile(fileName: String) {
 //    }
     println(sequence)
 
-    if (sequence.isEmpty() || length == null || startingLetterIndex == null) {
+    if (sequence.isEmpty() || length == 0 || startingLetterIndex == 0) {
         println("Невірні вхідні дані. Будь ласка, перевірте введені значення.")
         return
     }
@@ -29,7 +29,7 @@ fun findFile(fileName: String) {
         return
     }
 
-    val matchingWords = mutableListOf<String>()
+    // val matchingWords = mutableListOf<String>()
 
     /*
     file.forEachLine { line ->
@@ -41,13 +41,13 @@ fun findFile(fileName: String) {
         }
     }
     */
-
-    if (matchingWords.isEmpty()) {
-        println("Не знайдено жодного відповідного слова.")
-    } else {
-        println("Знайдені відповідні слова:")
-        matchingWords.forEach { println(it) }
-    }
+//
+//    if (matchingWords.isEmpty()) {
+//        println("Не знайдено жодного відповідного слова.")
+//    } else {
+//        println("Знайдені відповідні слова:")
+//        matchingWords.forEach { println(it) }
+//    }
 }
 
 
